@@ -1,0 +1,473 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>API - learnVsCode</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="03-扩展能做什么.html"><strong aria-hidden="true">1.</strong> 扩展能做什么</a></li><li class="chapter-item expanded "><a href="05-创建第一个demo.html"><strong aria-hidden="true">2.</strong> 创建第一个demo</a></li><li class="chapter-item expanded "><a href="07-API.html" class="active"><strong aria-hidden="true">3.</strong> API</a></li><li class="chapter-item expanded "><a href="11-pacakge.json配置.html"><strong aria-hidden="true">4.</strong> pacakge.json配置</a></li><li class="chapter-item expanded "><a href="21-使用vscode打造markdown编辑器.html"><strong aria-hidden="true">5.</strong> 使用vscode打造markdown编辑器</a></li><li class="chapter-item expanded "><a href="25-开发流程.html"><strong aria-hidden="true">6.</strong> 开发流程</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">learnVsCode</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#通知" id="通知">通知</a></h1>
+<ul>
+<li>window.showInformationMessage</li>
+<li>window.showWarningMessage</li>
+<li>window.showErrorMessage</li>
+</ul>
+<h1><a class="header" href="#输入框" id="输入框">输入框</a></h1>
+<p>用于文本输入，执行<code>const text = await vscode.window.showInputBox({})</code>
+如果用户取消，则返回空。</p>
+<h1><a class="header" href="#内容选择" id="内容选择">内容选择</a></h1>
+<p>用于内容选择，执行<code>const text = await vscode.window.showQuickPick(['1', '2', '3'])</code></p>
+<p>多选<code>const text = await vscode.window.showQuickPick(['1', '2', '3'], { canPickMany: true })</code></p>
+<h1><a class="header" href="#文件选择" id="文件选择">文件选择</a></h1>
+<p>文件选择<code>const files = await vscode.window.showOpenDialog()</code></p>
+<p>文件多选<code>const files = await vscode.window.showOpenDialog({ canSelectMany: true })</code></p>
+<h1><a class="header" href="#终端操作" id="终端操作">终端操作</a></h1>
+<p>创建输出panel
+<code>const channel = vscode.window.createOutputChannel('HelloWorld')</code></p>
+<p>创建terminal
+<code>const terminal = vscode.window.createTerminal('HelloWorld')</code></p>
+<p>terminal发送文本
+<code>terminal.sendText('ls -a')</code></p>
+<h1><a class="header" href="#注册命令" id="注册命令">注册命令</a></h1>
+<pre><code class="language-plain">import * as vscode from 'vscode';
+
+export function activate(context: vscode.ExtensionContext) {
+  vscode.commands.registerCommand('vscode-extension-demo.helloWorld', () =&gt; {
+    vscode.window.showInformationMessage('Hello World!');      
+  });
+}
+</code></pre>
+<p>带参数和返回值的命令</p>
+<pre><code class="language-plain">// 定义
+vscode.commands.registerCommand('vscode-extension-demo.helloWorld', (name = 'World') =&gt; {
+  vscode.window.showInformationMessage(`Hello ${name}!`);
+  return name;
+});
+
+// 调用
+const name = await vscode.commands.executeCommand('vscode-extension-demo.helloWorld', 'Demo');
+console.log(name); // 'Demo'
+
+</code></pre>
+<p>异步回调函数</p>
+<pre><code class="language-plain">// 定义
+vscode.commands.registerCommand('vscode-extension-demo.helloWorld', async () =&gt; {
+  await new Promise(resolve =&gt; setTimeout(resolve, 1000));
+  vscode.window.showInformationMessage(`Hello World!`);
+});
+
+// 调用
+await vscode.commands.executeCommand('vscode-extension-demo.helloWorld');
+// 1秒后才弹出消息框并打印
+console.log('end');
+</code></pre>
+<h1><a class="header" href="#自定义树形内容" id="自定义树形内容">自定义树形内容</a></h1>
+<p>通过TreeView API可以在VS Code的侧边栏中展示树形结构的内容，其样式与VSCode内置样式保持一致。<br />
+创建一个TreeView需要两步：</p>
+<ol>
+<li>在pacakge.json中配置视图相关属性</li>
+<li>创建一个TreeDataProvider并将其绑定到视图中</li>
+</ol>
+<p>package.json</p>
+<pre><code class="language-json">{
+  &quot;activationEvents&quot;: [
+    // 1. 打开树视图时激活插件（不定义则无法触发 TreeDataProvider 的创建和绑定）
+    &quot;onView:demoTreeView&quot;
+  ],
+  &quot;contributes&quot;: {
+    &quot;viewsContainers&quot;: {
+      &quot;activitybar&quot;: [
+        // 2. 往 ActivityBar 添加一个自定义视图容器
+        {
+          &quot;id&quot;: &quot;demoView&quot;,
+          &quot;title&quot;: &quot;Demo视图&quot;,
+          &quot;icon&quot;: &quot;$(list-tree)&quot;
+        }
+      ]
+    },
+    &quot;views&quot;: {
+      // 3. 往自定义视图容器添加视图
+      &quot;demoView&quot;: [
+        {
+          &quot;id&quot;: &quot;demoTreeView&quot;,
+          &quot;name&quot;: &quot;Demo树视图&quot;
+        }
+      ]
+    }
+  }
+}
+</code></pre>
+<p>TreeView API</p>
+<pre><code class="language-js">
+import * as vscode from 'vscode';
+
+export function activate() {
+  const treeDataProvider: vscode.TreeDataProvider&lt;string&gt; = {
+    getChildren(text) {
+      if (text) {
+        return [1, 2, 3].map(num =&gt; `subitem${num}`);
+      }
+      return [1, 2, 3, 4].map(num =&gt; `item${num}`);
+    },
+    getTreeItem(label) {
+      return {
+        label,
+        collapsibleState: label === 'item3' ? vscode.TreeItemCollapsibleState.Collapsed : vscode.TreeItemCollapsibleState.None,
+      };
+    },
+  };
+
+  // 可以使用 treeview 实例添加状态监听事件
+  const treeview = vscode.window.createTreeView('demoTreeView', {
+    treeDataProvider,
+  });
+}
+</code></pre>
+<h1><a class="header" href="#自定义webview" id="自定义webview">自定义webview</a></h1>
+<pre><code class="language-js">import * as vscode from 'vscode';
+
+export function activate(context: vscode.ExtensionContext) {
+  const panel = vscode.window.createWebviewPanel(
+    'helloWorld',
+    'Hello World',
+    vscode.ViewColumn.One,
+  );
+   
+  panel.webview.html = `
+    &lt;!DOCTYPE html&gt;
+    &lt;html lang=&quot;en&quot;&gt;
+    &lt;head&gt;
+      &lt;meta charset=&quot;UTF-8&quot;&gt;
+      &lt;title&gt;Hello World&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body style=&quot;padding: 16px;&quot;&gt;
+      &lt;div&gt;Hello World!&lt;/div&gt;
+    &lt;/body&gt;
+    &lt;/html&gt;
+  `;
+}
+</code></pre>
+<h1><a class="header" href="#插件和webview之间双向通信" id="插件和webview之间双向通信">插件和webview之间双向通信</a></h1>
+<p>例如markdown的渲染就是一个webview，这个webview需要响应editor中内容的更新</p>
+<pre><code class="language-js">import * as vscode from 'vscode';
+
+export function activate(context: vscode.ExtensionContext) {
+  const panel = vscode.window.createWebviewPanel(
+    'helloWorld',
+    'Hello World',
+    vscode.ViewColumn.One,
+    // 1. 首先需要开启 webview 的脚本能力
+    { enableScripts: true },
+  );
+  
+  // 2. 插件侧添加消息订阅函数
+  panel.webview.onDidReceiveMessage(message =&gt; {
+    console.log(`receive message from ${message}`);
+    // 向 webview 发送消息
+    panel.webview.postMessage('extension');
+  });
+   
+  panel.webview.html = `
+    &lt;!DOCTYPE html&gt;
+    &lt;html lang=&quot;en&quot;&gt;
+    &lt;head&gt;
+      &lt;meta charset=&quot;UTF-8&quot;&gt;
+      &lt;title&gt;Hello World&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body style=&quot;padding: 16px;&quot;&gt;
+      &lt;div&gt;Hello World!&lt;/div&gt;
+      &lt;!-- 3. webview 侧添加消息订阅函数 --&gt;
+      &lt;script&gt;
+        (function() {
+          const vscode = acquireVsCodeApi();
+          // 向插件侧发送消息
+          vscode.postMessage('webview');
+
+          window.addEventListener('message', e =&gt; {
+            console.log('%c[Webview Host]', 'color:blue;', \`\nreceive message from \${e.data}\`);
+          });
+        })();
+      &lt;/script&gt;
+    &lt;/body&gt;
+    &lt;/html&gt;
+  `;
+}
+</code></pre>
+<h1><a class="header" href="#在侧边栏中显示webview" id="在侧边栏中显示webview">在侧边栏中显示webview</a></h1>
+<p>package.json</p>
+<pre><code class="language-json">{
+  &quot;contributes&quot;: {
+    &quot;views&quot;: {
+      &quot;demoView&quot;: [
+        {
+          // 需要额外指定该属性
+          &quot;type&quot;: &quot;webview&quot;,
+          &quot;id&quot;: &quot;demoWebviewView&quot;,
+          &quot;name&quot;: &quot;Demo Webview视图&quot;
+        }
+      ]
+    }
+  }
+}
+</code></pre>
+<p>创建WebViewProvider</p>
+<pre><code class="language-js">import * as vscode from 'vscode';
+
+export function activate() {
+  class DemoWebviewViewProvider implements vscode.WebviewViewProvider {
+    public resolveWebviewView(webviewView: vscode.WebviewView) {
+      webviewView.webview.options = {
+        enableScripts: true,
+      };
+
+      webviewView.webview.html = `
+        &lt;!DOCTYPE html&gt;
+        &lt;html lang=&quot;en&quot;&gt;
+        &lt;head&gt;
+          &lt;meta charset=&quot;UTF-8&quot;&gt;
+          &lt;title&gt;Hello World Webview View&lt;/title&gt;
+        &lt;/head&gt;
+        &lt;body style=&quot;padding: 16px;&quot;&gt;
+          &lt;div&gt;Hello World Webview View!&lt;/div&gt;
+        &lt;/body&gt;
+        &lt;/html&gt;
+      `;
+    }
+  }
+
+  vscode.window.registerWebviewViewProvider('demoWebviewView', new DemoWebviewViewProvider());
+}
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="05-创建第一个demo.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="11-pacakge.json配置.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="05-创建第一个demo.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="11-pacakge.json配置.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
